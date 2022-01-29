@@ -16,7 +16,8 @@ class TrainingModule(pl.LightningModule):
         super().__init__()
         
         # see config.py for details
-        self.hparams = hparams
+        for key in hparams.keys():
+            self.hparams[key]=hparams[key]
         # pytorch lightning does not support saving YACS CfgNone
         cfg = get_cfg(cfg_dict=self.hparams)
         self.cfg = cfg
