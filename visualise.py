@@ -87,15 +87,15 @@ def download_example_data():
             response = get(url)
             # write to file
             file.write(response.content)
-
-    os.makedirs(EXAMPLE_DATA_PATH, exist_ok=True)
-    url_list = ['https://github.com/wayveai/fiery/releases/download/v1.0/example_1.npz',
-                'https://github.com/wayveai/fiery/releases/download/v1.0/example_2.npz',
-                'https://github.com/wayveai/fiery/releases/download/v1.0/example_3.npz',
-                'https://github.com/wayveai/fiery/releases/download/v1.0/example_4.npz'
-                ]
-    for url in url_list:
-        download(url, os.path.join(EXAMPLE_DATA_PATH, os.path.basename(url)))
+    if not os.path.exists(EXAMPLE_DATA_PATH):
+        os.makedirs(EXAMPLE_DATA_PATH, exist_ok=True)
+        url_list = ['https://github.com/wayveai/fiery/releases/download/v1.0/example_1.npz',
+                    'https://github.com/wayveai/fiery/releases/download/v1.0/example_2.npz',
+                    'https://github.com/wayveai/fiery/releases/download/v1.0/example_3.npz',
+                    'https://github.com/wayveai/fiery/releases/download/v1.0/example_4.npz'
+                    ]
+        for url in url_list:
+            download(url, os.path.join(EXAMPLE_DATA_PATH, os.path.basename(url)))
 
 
 def visualise(checkpoint_path):
