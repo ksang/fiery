@@ -1,0 +1,7 @@
+nuscenes-devkit 
+pytorch_lightning==1.5.9
+opencv-python
+efficientnet_pytorch==0.7.0
+torchvision
+torchmetrics==0.7.0
+fvcore
